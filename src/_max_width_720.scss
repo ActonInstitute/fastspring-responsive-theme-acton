@@ -1,0 +1,341 @@
+$nav-off-canvas-width: 70%;
+#main{
+    .block{
+        padding-top: 1em;
+    }
+}
+#top{
+    .logo-wrapper{
+        text-align: right;
+        img{
+            max-width: 80%;
+            max-height: 4.5em;
+        }
+    }
+    .nav-btn{
+        @include not-hidden;
+    }
+}
+#nav {
+    position: absolute;
+    top: 0;
+    padding-top: pem(90);
+    &:not(:target) {
+        z-index: 1;
+        height: 0;
+    }
+    &:target {
+        .close-btn {
+            display: block;
+        }
+    }
+    .close-btn {
+        @include not-hidden;
+        position: absolute;
+        top: pem(-50);
+        left: pem(30);
+    }
+    ul{
+        text-align: left;
+    }
+    .block {
+        position: relative;
+        padding: 0;
+        overflow: visible;
+    }
+    li {
+        display: block;
+        border-right: none;
+        position: relative;
+        font-size: 1em;
+        border-top: 1px solid rgba(255,255,255, 0.1);
+        &:last-child {
+            border-bottom: 1px solid rgba(255,255,255, 0.1);
+        }
+        &.is-active:after {
+            z-index: 50;
+            display: block;
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: pem(-0.5);
+            margin-top: pem(-10);
+            border-top: pem(10) transparent solid;
+            border-bottom: pem(10) transparent solid;
+            border-right: pem(10) #fff solid;
+        }
+        a {
+            padding: pem(12, 14) pem(30, 14);
+        }
+    }
+}
+.js-ready {
+    #nav {
+        height: 100%;
+        width: $nav-off-canvas-width;
+        background: $background-color;
+        @include box-shadow(inset pem(-24) 0 pem(24) pem(-12) rgba(0,0,0, 0.15));
+        .block {
+            background: transparent;
+            padding-top: 1.25em;
+        }
+        .close-btn {
+            display: block;
+            @include opacity(1);
+
+            &:focus,
+            &:hover {
+                @include opacity(0.8);
+            }
+        }
+    }
+}
+.js-ready {
+    #nav {
+        left: (0 - $nav-off-canvas-width);
+    }
+    #inner-wrap {
+        left: 0;
+    }
+}
+.js-nav {
+    #inner-wrap {
+        left: $nav-off-canvas-width;
+    }
+}
+.csstransforms3d.csstransitions.js-ready {
+    #nav {
+        left: 0;
+        @include transform(translate3d(-100%,0,0));
+        @include backface-visibility(hidden);
+    }
+    #inner-wrap {
+        left: 0 !important;
+        @include transform(translate3d(0,0,0));
+        @include transition(transform 500ms ease);
+        @include backface-visibility(hidden);
+    }
+}
+.csstransforms3d.csstransitions.js-nav {
+    #inner-wrap {
+        @include transform(translate3d($nav-off-canvas-width,0,0) scale3d(1,1,1));
+    }
+}
+.csstransforms3d.csstransitions.js-ready {
+    #nav {
+
+        .block {
+            @include opacity(0.7);
+            @include transition(opacity 300ms 100ms ease, transform 500ms ease);
+            @include transform(translate3d($nav-off-canvas-width,0,0) scale3d(0.9,0.9,0.9));
+            @include transform-origin(50%, 0%);
+        }
+    }
+}
+.csstransforms3d.csstransitions.js-nav {
+
+    #nav {
+
+        .block {
+            @include opacity(1);
+            @include transform(translate3d(0,0,0));
+        }
+    }
+}
+.store-product-detail-image{
+    border: none;
+    margin: 0;
+    display: block;
+    float: none;
+    text-align: center;
+    width: 100%;
+    img{
+        border: 1px solid #eaeaea;
+        padding: 5px;
+        margin-bottom: 10px;
+        -moz-border-radius-: 10px;
+        -webkit-border-radius: 10px;
+        -khtml-border-radius: 10px;
+        margin-right: 0;
+    }
+}
+.store-product-detail{
+
+    .store-product-detail-title{
+        text-align: center;
+    }
+    .store-value-money{
+        display: block;
+        float: none;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    .store-product-price{
+        text-align: center;
+        color: #21620b;
+        
+    }
+    .store-product-detail-quantity{
+        text-align: center;
+        .core-form-field-label{
+            display: none;
+        }
+    }
+    .store-product-detail-description{
+        text-align: center;
+        font-size: 1.25em;
+        line-height: 1.5;
+    }
+
+}
+.store-product-option-group-title a,
+.store-decorate-button .store-page-navigation .store-action-command, 
+.store-decorate-button .store-product-list-item-action-list .store-action-command, 
+.store-decorate-button .store-page-navigation .store-action-command:hover, 
+.store-decorate-button .store-product-list-item-action-list .store-action-command:hover, 
+.store-decorate-button .store-page-navigation .store-action-command:active, 
+.store-decorate-button .store-product-list-item-action-list .store-action-command:active, 
+.store-decorate-button .store-page-navigation .store-action-command:link, 
+.store-decorate-button .store-product-list-item-action-list .store-action-command:link, 
+.store-decorate-button .store-page-navigation .store-action-command:visited, 
+.store-decorate-button .store-product-list-item-action-list .store-action-command:visited, 
+.store-decorate-button .store-page-navigation .store-action-command:focus, 
+.store-decorate-button .store-product-list-item-action-list .store-action-command:focus{
+    font-size: 1.25em;
+}
+ul.store-product-options{
+
+    .store-product-option-title{
+        margin-bottom: 0;
+        position: relative;
+    }
+    .store-product-option-display{
+        clear: both;
+        padding-left: 0;
+        display: block;
+        width: 100%;
+        float: right;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-right: 0;
+    }
+    .store-product-option-price{
+
+        clear: right;
+    }
+    .store-product-option-description, .store-product-option-description-offers{
+        margin: 0;
+    }
+
+}
+.store-section-customer-details{
+    .core-form-field-area-left{
+        float: none;
+        width: 100%;
+        margin-bottom: 0.75em;
+    }
+    .core-form-field-area-right{
+        float: none;
+        margin-left: 0;
+        width: 100%;
+    }
+    .core-form-field-group-body{
+        margin-bottom: 0.75em;
+    }
+}
+.store-section-complete{
+    .core-section-header{
+        text-align: center;
+    }
+    .store-notice-bill-descriptor{
+        display: block;
+        width: 100%;
+        padding: 5px;
+        margin: 10px 0;
+        clear: both;
+    }
+}
+#store-processing-element{
+    background: none;
+    padding-left: 0;
+    display:block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px 0;
+    clear: both;
+}
+#store-variation-selection{
+    display: none;
+}
+.store-section-order-contents{
+    .store-order-item-group-action-list{
+        li{
+            display: block;
+            padding: 5px 0;
+        }
+    }
+}
+.store-product-options-check{
+    input{
+        width: 2em;
+        height: 2em;
+    }
+}
+
+/* Font */
+.prose {
+    ul, ol {
+        list-style: none;
+        font-size: pem(20);
+        line-height: pem(28);
+        margin-bottom: pem(28);
+    }
+    ul.store-product-options{
+        list-style: none;
+    }
+    p, .core-section {
+        font-size: pem(18);
+        line-height: pem(26);
+        margin-bottom: pem(26);
+        &.small {
+            color: #666;
+            font-size: pem(16);
+            line-height: pem(26, 16);
+            margin-bottom: pem(26, 16);
+        }
+        &.medium {
+            color: #666;
+            font-size: pem(17);
+            line-height: pem(26, 17);
+            margin-bottom: pem(26, 17);
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    h1 {
+        font-size: pem(30);
+        line-height: pem(36, 30);
+        margin-bottom: pem(12, 30);
+    }
+    h2 {
+        font-size: pem(24);
+        line-height: pem(30, 24);
+        margin-bottom: pem(12, 24);
+    }
+    h3 {
+        font-size: pem(20);
+        line-height: pem(24, 20);
+        margin-bottom: pem(12, 20);
+    }
+    h4 {
+        font-size: pem(18);
+        line-height: pem(20, 18);
+        margin-bottom: pem(12, 18);
+    }
+    h5 {
+        font-size: pem(16);
+        line-height: pem(18, 16);
+        margin-bottom: pem(12, 16);
+    }
+}
